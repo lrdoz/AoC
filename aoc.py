@@ -38,6 +38,15 @@ class puzzle_data(object):
 
         self.temp = None
 
+    def dump_temp(self):
+        """Shall you want the input to be saved in a file, note
+        you will also need to uncomment self.dump_temp from
+        get_data"""
+        fname = ('./input{}.txt'.format(self.day))
+        with open(fname, 'w') as f:
+            f.write(self.temp)
+            f.flush()
+
     def get_data(self):
         """get data for days 1-25 since this are user
         dependent"""
@@ -54,7 +63,7 @@ class puzzle_data(object):
             else:
                 raise IOError("Ooops that did not work, got a {} code :{}".format(response.status_code,
                                                                                   response.content))
-
+        # self.dump_temp()
         return self.temp
 
     def submit(self, part, answer):
