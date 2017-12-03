@@ -12,7 +12,7 @@ x = helper.get_data()
 def captcha1():
     return sum(map(int,[ x[i] for i in range(len(x)) if x[i] == x[i - 1] ]))
 
-def captcha1():
+def captcha2():
     return sum(int(x[i]) for i in range(len(x)) if x[i] == x[i - len(x) // 2])
 
 

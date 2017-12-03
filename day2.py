@@ -12,9 +12,6 @@ helper = aoc.Data(year = 2017, day = 2)
 my_input = helper.get_data()
 rows = data.split('\n')
 
-with open('./inputs/17_2input.txt') as code:
-    rows= code.read().strip().split('\n')
-
 # Getting at it
 def checksum1():
     check = 0
