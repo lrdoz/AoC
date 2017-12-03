@@ -28,8 +28,6 @@ dummy_grid = np.asarray([[ 17.,  16.,  15.,  14.,  13.],
                          [ 20.,   7.,   8.,   9.,  10.],
                          [ 21.,  22.,  23.,  24.,  25.]])
 
-# Getting the steps needed in either direction to the center
-step_grid = np.ceil(np.sqrt(dummy_grid))//2
 
 # Too lazy to be dealing with arrays right now so I will
 # get back to this later
