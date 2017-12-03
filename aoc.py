@@ -1,4 +1,3 @@
-import errno
 import os
 import sys
 import requests
@@ -9,14 +8,16 @@ payload_refer = 'http://adventofcode.com/{year}/day/{day}'
 payload_submit = 'http://adventofcode.com/{year}/day/{day}/answer'
 
 # Additional info needed
-fname = 'input.txt'
-module_path = os.path.dirname(__file__)
+module_path = os.path.dirname(__file__) # not really needed but will leave it here
 user_agent =  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
 cookie = './cookie.txt'
 
 #----- Helpers ------
 def eprint(*args, **kwargs):
     print(*args, file = sys.stderr, **kwargs)
+
+class AocError(Exception):
+    pass
 
 def user_session(cookie = cookie):
     try:
@@ -82,7 +83,7 @@ class puzzle_data(object):
         if response.status_code != 200:
             eprint("Submission status", response.status_code)
             eprint(response.content)
-            raise AocdError('Unexpected response')
+            raise AocError('Unexpected response')
 
         content = response.content
         if "That's the right answer!" in content:

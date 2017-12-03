@@ -1,0 +1,12 @@
+
+\.idea/
+
+\.ipynb_checkpoints/
+
+cookie\.txt
+
+*.txt
+
+\.cache/v/cache/
+
+__pycache__/
