@@ -6,7 +6,7 @@ Advent of Code 2017: Day 1
 import aoc
 
 # Getting the input for the puzzle
-helper = aoc.puzzle_data(year = 2017, day = 2)
+helper = aoc.puzzle_data(year = 2017, day = 1)
 x = helper.get_data()
 
 with open('./inputs/17_1input.txt') as code:
