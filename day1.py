@@ -9,15 +9,11 @@ import aoc
 helper = aoc.puzzle_data(year = 2017, day = 1)
 x = helper.get_data()
 
-with open('./inputs/17_1input.txt') as code:
-    x = code.read().strip()
+def captcha1():
+    return sum(map(int,[ x[i] for i in range(len(x)) if x[i] == x[i - 1] ]))
 
 def captcha1():
-    return sum(map(int,[ x[i] for i in range(len(x)) if x[i] == x[i-1] ]))
-
-def captcha1():
-    step = len(x)
-    return sum(map(int,[ x[i] for i in range(len(x)) if x[i] == x[i-1] ]))
+    return sum(int(x[i]) for i in range(len(x)) if x[i] == x[i - len(x) // 2])
 
 
 print('Part 1: {}'.format(captcha1()))
