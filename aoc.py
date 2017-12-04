@@ -25,7 +25,7 @@ def user_session(cookie = cookie):
             secret = cookie_key.read().strip()
             #print(secret)
     except:
-        raise ValueError("You did not provide your session cookie")
+        raise ValueError('You did not provide your session cookie')
     return secret
 
 class puzzle_data(object):
@@ -34,7 +34,7 @@ class puzzle_data(object):
         self.day = day
         self.session = session
         if session is None:
-            print("Getting a session for you")
+            print('Getting a session for you')
             self.session = user_session()
 
         self.temp = None
@@ -62,8 +62,7 @@ class puzzle_data(object):
                 print('Got your input for Day {}. Hooray! Get working'.format(self.day))
                 self.temp = response.text.strip()
             else:
-                raise IOError("Ooops that did not work, got a {} code :{}".format(response.status_code,
-                                                                                  response.content))
+                raise IOError('Ooops that did not work, got a {} code: {}'.format(response.status_code, response.content))
         # self.dump_temp()
         return self.temp
 
@@ -81,15 +80,15 @@ class puzzle_data(object):
                                  )
 
         if response.status_code != 200:
-            eprint("Submission status", response.status_code)
+            eprint('Submission status:', response.status_code)
             eprint(response.content)
             raise AocError('Unexpected response')
 
-        content = response.content
-        if "That's the right answer!" in content:
-            print("Correct answer")
+        content = response.content.decode()
+        if ("That's the right answer!") in content:
+            print('Whoop you got it!')
         elif "That's not the right answer" in content:
-            print("Wrong answer: your answer is", content.split("your answer is ")[1].split(".", 1)[0])
+            print('Wrong answer! your answer is: ', content.split('your answer is ')[1].split(".", 1)[0])
         else:
-            print("Unexpected response:")
+            print('Unexpected response: ')
             print(content)
