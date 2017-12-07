@@ -10,19 +10,21 @@ import collections
 helper = aoc.puzzle_data(year = 2017, day = 5)
 my_input = helper.get_data().split('\n')
 offsets = [int(offset) for offset in my_input]
-print(offsets)
+
 
 # ----- Part 1 -----
 
-def trampoline(offset):
+def trampoline():
     i = 0
     jump = 0
-    while 0 <= i < len(offset):
-        offset[i] += 1
+    while 0 <= i < len(offsets):
+        offsets[i] += 1
         jump +=1
-        i += offset[i] - 1
+        i += offsets[i] - 1
 
     return jump
+
+
 
 # ----- Test part 1 -----
 import pytest
@@ -33,20 +35,19 @@ def test_trampoline():
 
 # ----- Test passed so this can be submitted
 
-part1 = trampoline(offsets)
+part1 = trampoline()
 helper.submit(1, str(part1))
 
 
 # ----- Part 2 -----
-def trampoline_2(offset):
+def trampoline_2():
     i = 0
     jump = 0
     while 0 <= i < len(offset):
         jump +=1
         new = -1 if offset[i] >= 3 else 1
         offset[i] += new
-        i += offset[i] - new
-    print(offset)
+        i += (offset[i] - new)
     return jump
 
 # ----- Test part 2 -----
@@ -57,5 +58,22 @@ def test_trampoline_2():
 
 # ----- Test passed so this can be submitted
 
-part2 = trampoline_2(offsets)
+part2 = trampoline_2()
 helper.submit(2, str(part2))
+
+
+
+def trampoline_all(part):
+    i = 0
+    jump = 0
+    while 0 <= i < len(offsets):
+        jump +=1
+        ni = i + offsets[i]
+        if part == 2 and offsets[i] >= 3:
+            offsets[i] -= 1
+        else:
+            offsets[i] += 1
+        i = ni
+    return jump
+
+print(trampoline_all(2))
