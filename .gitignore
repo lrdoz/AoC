@@ -10,3 +10,5 @@ cookie\.txt
 \.cache/v/cache/
 
 __pycache__/
+
+\.Rhistory
