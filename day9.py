@@ -19,7 +19,6 @@ print(my_input)
 def stream_cleaner(stream, part):
     garbage = False
     groups = 0
-    garb_chars = 0
     prev_group = 0
     garb_total = 0
 
@@ -30,11 +29,10 @@ def stream_cleaner(stream, part):
         if garbage == True:
             if char == '>':
                 garbage = False
-                garb_total += garb_chars
             elif char == '!':
                 next(stream)
             else:
-                garb_chars += 1
+                garb_total += 1
         else:
             if char == '{':
                 prev_group += 1
@@ -43,7 +41,6 @@ def stream_cleaner(stream, part):
                 prev_group += -1
             elif char == '<':
                 garbage = True
-                garb_chars = 0
     if part ==1 :
         return groups
     else:
@@ -62,8 +59,8 @@ def test_stream_cleaner():
     assert (stream_cleaner)('<{o"i!a,<{i<a>', 2) == 10
 
 # Tests passed now to submit
-#part1 = stream_cleaner(my_input)
-#helper.submit(1, str(part1))
+part1 = stream_cleaner(my_input)
+helper.submit(1, str(part1))
 
 part2 = stream_cleaner(my_input, 2)
 helper.submit(2, str(part2))
