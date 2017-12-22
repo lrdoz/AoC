@@ -35,12 +35,12 @@ def generate2(a, b, div):
     A = 16807
     B = 48271
     for i in range(5000000):
-        a = (a * A) % 2147483647
+        a = (a * A) % div
         while a % 4 != 0:
-            a = (a * A) % 2147483647
-        b = (b * B) % 2147483647
+            a = (a * A) % div
+        b = (b * B) % div
         while b % 8 != 0:
-            b = (b * B) % 2147483647
+            b = (b * B) % div
         if (a & mask) == (b & mask):
             count += 1
     return (count)
