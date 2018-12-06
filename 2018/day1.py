@@ -18,7 +18,7 @@ def freq1(freq):
     return sum(freq)
 
 
-print(f"Part 1: {freq1()}")
+print(f"Part 1: {freq1(freq)}")
 
 ##############################################################################
 # Part 2
