@@ -38,7 +38,7 @@ def user_session(cookie=cookie):
         with open(cookie) as cookie_key:
             secret = cookie_key.read().strip()
     except:
-        raise ValueError("You did not provide your session cookie")
+        raise ValueError("You did not provide your session cookie 🍪")
     return secret
 
 
